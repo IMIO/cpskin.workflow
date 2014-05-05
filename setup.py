@@ -38,7 +38,9 @@ setup(name='cpskin.workflow',
       install_requires=[
           'setuptools',
           'Plone',
-          # -*- Extra requirements: -*-
       ],
+      extras_require=dict(
+          test=['plone.app.testing'],
+      ),
       entry_points={},
 )

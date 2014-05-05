@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="cpskin.workflow.default"
+               version="20140505-01"
+               handler="cpskin.workflow.setuphandlers.installWorkflows"
+               title="cpskin.workflows: install import step">
+  </import-step>
+</import-steps>

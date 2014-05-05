@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<import-steps>
+  <import-step id="cpskin.workflow.uninstall"
+               version="20140505-01"
+               handler="cpskin.workflow.setuphandlers.uninstallWorkflows"
+               title="cpskin.workflows: uninstall import step">
+  </import-step>
+</import-steps>
