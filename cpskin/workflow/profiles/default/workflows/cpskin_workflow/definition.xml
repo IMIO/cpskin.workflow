@@ -7,7 +7,8 @@
              description="
 - Used for CPSkin site
 - Has three states: Created, Published and hidden (from navigation) and Published and shown (in navigation)"
-             i18n:domain="cpskin">
+             i18n:domain="plone"
+             i18n:attributes="description">
  <permission>View</permission>
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
