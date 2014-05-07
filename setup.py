@@ -39,6 +39,7 @@ setup(name='cpskin.workflow',
           'setuptools',
           'Plone',
           'cpskin.core',
+          'cpskin.locales'
       ],
       extras_require=dict(
           test=['plone.app.testing'],

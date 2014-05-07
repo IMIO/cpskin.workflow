@@ -1,6 +1,10 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:genericsetup="http://namespaces.zope.org/genericsetup">
 
+  <!-- Dependencies -->
+  <include package="cpskin.core" />
+  <include package="cpskin.locales" />
+
   <genericsetup:registerProfile
       name="default"
       title="cpskin.workflows"
