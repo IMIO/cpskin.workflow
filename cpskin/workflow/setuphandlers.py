@@ -61,6 +61,34 @@ def installWorkflows(context):
                                                    wf_states_to_show=('published_and_shown',))
 
 
+def configureMembers(context):
+    if context.readDataFile('cpskin.workflow-membersconfig.txt') is None:
+        return
+
+    logger.info('Configuring members')
+    portal = context.getSite()
+
+    # Configuring local workflow policy
+    ppw = portal.portal_placeful_workflow
+    if not hasattr(ppw, 'members-policy'):
+        ppw.manage_addWorkflowPolicy('members-policy',
+                                     workflow_policy_type='default_workflow_policy (Simple Policy)',
+                                     duplicate_id='')
+        mp = getattr(ppw, 'members-policy')
+        mp.setTitle('Members Folder policy')
+        mp.setDefaultChain('simple_publication_workflow')
+        for ptype in portal.portal_types.listContentTypes():
+            mp.setChain(ptype, ('(Default)', ))
+        mp.setChain('Folder', ('readonly_workflow', ))
+        mp.portal_workflow.updateRoleMappings()
+
+    # Publish Members
+    members = portal['Members']
+    wft = portal.portal_workflow
+    if wft.getInfoFor(members, 'review_state') == 'private':
+        wft.doActionFor(members, 'publish_and_hide')
+
+
 def uninstallWorkflows(context):
     if context.readDataFile('cpskin.workflow-uninstall.txt') is None:
         return

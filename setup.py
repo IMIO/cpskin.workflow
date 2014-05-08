@@ -38,6 +38,7 @@ setup(name='cpskin.workflow',
       install_requires=[
           'setuptools',
           'Plone',
+          'Products.CMFPlacefulWorkflow',
           'cpskin.core',
           'cpskin.locales'
       ],
