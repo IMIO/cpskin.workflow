@@ -1,5 +1,7 @@
 import unittest2 as unittest
+
 from plone.app.testing import applyProfile
+
 from Products.CMFCore.utils import getToolByName
 
 from cpskin.workflow.testing import CPSKIN_WORKFLOW_INTEGRATION_TESTING
