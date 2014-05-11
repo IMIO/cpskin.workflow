@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <import-steps>
   <import-step id="cpskin.workflow.members-config"
-               version="20140508-01"
                handler="cpskin.workflow.setuphandlers.configureMembers"
                title="cpskin.workflows: members configuration import step">
     <dependency step="workflow" />
