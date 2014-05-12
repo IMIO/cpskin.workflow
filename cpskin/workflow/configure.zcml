@@ -14,8 +14,6 @@
       description="Installs CPSkin workflows"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      i18n:attributes="title gs_profiles_default_title;
-                       description gs_profiles_default_description;"
       />
 
   <genericsetup:registerProfile
@@ -25,8 +23,6 @@
       description="Installs members configuration workflow"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      i18n:attributes="title gs_profiles_default_title;
-                       description gs_profiles_default_description;"
       />
 
   <genericsetup:registerProfile
@@ -36,8 +32,6 @@
       description="Uninstalls CPSkin workflows"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
-      i18n:attributes="title gs_profiles_default_title;
-                       description gs_profiles_default_description;"
       />
 
 </configure>
