@@ -8,7 +8,7 @@
       name="testing"
       title="cpskin.workflows: testing"
       directory="profiles/testing"
-      description="cpskin workflows test profile"
+      description="Installs CPSkin workflows test profile"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
