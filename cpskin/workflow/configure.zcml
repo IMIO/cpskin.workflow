@@ -20,7 +20,7 @@
       name="members-configuration"
       title="cpskin.workflows: members configuration"
       directory="profiles/members-config"
-      description="Installs members configuration workflow"
+      description="Installs CPSkin workflows with members configuration"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
