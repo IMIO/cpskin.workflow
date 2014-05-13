@@ -52,14 +52,6 @@ def installWorkflows(context):
                      'visible': 'published_and_hidden'}
         remap_workflow(portal, type_ids=type_ids, chain=chain, state_map=state_map)
 
-    # define some navtree properties
-    # we want to enable wf filtering and show only elements that are published_and_show
-    logger.info("Adapting navigation")
-    navtree_properties = portal.portal_properties.navtree_properties
-    if navtree_properties.enable_wf_state_filtering is False:
-        navtree_properties.manage_changeProperties(enable_wf_state_filtering=True,
-                                                   wf_states_to_show=('published_and_shown',))
-
 
 def configureMembers(context):
     if context.readDataFile('cpskin.workflow-membersconfig.txt') is None:
