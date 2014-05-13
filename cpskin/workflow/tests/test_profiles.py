@@ -30,3 +30,15 @@ class TestProfiles(unittest.TestCase):
         workflow = getToolByName(portal, 'portal_workflow')
         self.assertFalse('cpskin_workflow' in workflow)
         self.assertFalse('cpskin_moderation_workflow' in workflow)
+
+    def test_complete_uninstall(self):
+        portal = self.layer['portal']
+        workflow = getToolByName(portal, 'portal_workflow')
+        applyProfile(portal, 'cpskin.workflow:members-configuration')
+        self.assertTrue('cpskin_workflow' in workflow)
+        self.assertTrue('cpskin_moderation_workflow' in workflow)
+        self.assertTrue('readonly_workflow' in workflow)
+        applyProfile(portal, 'cpskin.workflow:uninstall')
+        self.assertFalse('cpskin_workflow' in workflow)
+        self.assertFalse('cpskin_moderation_workflow' in workflow)
+        self.assertFalse('readonly_workflow' in workflow)

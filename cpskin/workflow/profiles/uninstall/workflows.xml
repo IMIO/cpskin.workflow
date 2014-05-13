@@ -2,4 +2,5 @@
 <object name="portal_workflow" meta_type="Plone Workflow Tool" purge="False">
     <object name="cpskin_workflow" meta_type="Workflow" remove="True" />
     <object name="cpskin_moderation_workflow" meta_type="Workflow" remove="True" />
+    <object name="readonly_workflow" meta_type="Workflow" remove="True" />
 </object>
