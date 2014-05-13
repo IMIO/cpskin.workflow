@@ -82,14 +82,13 @@ def uninstallWorkflows(context):
     nondefault = [info[0] for info in wft.listChainOverrides()]
     # list types with the default workflow
     type_ids = [type for type in tt.listContentTypes() if type not in nondefault]
-    chain = '(Default)'
     if wft.getDefaultChain() and wft.getDefaultChain()[0].startswith('cpskin'):
-        wft.setDefaultChain('simple_publication_workflow')
         state_map = {'created': 'private',
                      'pending': 'pending',
                      'published_and_hidden': 'published',
                      'published_and_shown': 'published'}
-        remap_workflow(portal, type_ids=type_ids, chain=chain, state_map=state_map)
+        remap_workflow(portal, type_ids=type_ids, chain=('simple_publication_workflow',), state_map=state_map)
+        wft.setDefaultChain('simple_publication_workflow')
 
     # we must re-create criterium on review_state who use selection_list
     # (published_and_hidden and published_and_shown) by single published value
