@@ -1,15 +1,31 @@
 .state-created {
-  color: red;
+    background-color: #FF0000;
+    border: 0.1em solid #FF0000;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
 }
 
 .state-pending {
-  color: orange;
+    background-color: #FFA500;
+    border: 0.1em solid #FFA500;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
 }
 
 .state-published_and_shown {
-  color: blue;
+    background-color: #0000FF;
+    border: 0.1em solid #0000FF;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
 }
 
 .state-published_and_hidden {
-  color: grey;
+    background-color: #808080;
+    border: 0.1em solid #808080;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
 }
