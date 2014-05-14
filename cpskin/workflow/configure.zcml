@@ -8,6 +8,10 @@
   <include package="cpskin.core" />
   <include package="cpskin.locales" />
 
+  <!-- We should add a condition on this : members-configuration profile must be installed -->
+  <subscriber for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
+              handler=".events.user_initial_logged_in" />
+
   <browser:resource
       name="cpskin.workflow.style.css"
       file="style.css"
