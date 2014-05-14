@@ -1,0 +1,15 @@
+.state-created {
+  color: red;
+}
+
+.state-pending {
+  color: orange;
+}
+
+.state-published_and_shown {
+  color: blue;
+}
+
+.state-published_and_hidden {
+  color: grey;
+}
