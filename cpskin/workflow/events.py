@@ -11,8 +11,7 @@ def user_initial_logged_in(event):
     """
     portal = api.portal.get()
     pm = getToolByName(portal, 'portal_membership')
-
-    # XXX needed because happens after notifying the event we are subscribed to
+    # needed because happens after notifying the event we are subscribed to :
     pm.createMemberArea()
 
     home = pm.getHomeFolder()
