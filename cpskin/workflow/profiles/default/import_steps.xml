@@ -2,6 +2,6 @@
 <import-steps>
   <import-step id="cpskin.workflow.default"
                handler="cpskin.workflow.setuphandlers.installWorkflows"
-               title="cpskin.workflows: install import step">
+               title="cpskin.workflow: install import step">
   </import-step>
 </import-steps>

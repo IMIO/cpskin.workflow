@@ -14,15 +14,6 @@ def installWorkflows(context):
     logger.info('Installing workflows')
     portal = context.getSite()
 
-    # we must re-create criterium on review_state who use single published
-    # value by selection_list (published_and_hidden and published_and_shown)
-    # for news
-    if hasattr(portal, 'news') and hasattr(portal.news, 'aggregator'):
-        changeStateCriteria(portal.news.aggregator, 'install')
-    # for event
-    if hasattr(portal, 'events') and hasattr(portal.events, 'aggregator'):
-        changeStateCriteria(portal.events.aggregator, 'install')
-
     # we change the default workflow
     logger.info("Adapting default workflow and existing objects")
     wft = getToolByName(portal, 'portal_workflow')
@@ -83,47 +74,3 @@ def uninstallWorkflows(context):
                      'published_and_shown': 'published'}
         remap_workflow(portal, type_ids=type_ids, chain=('simple_publication_workflow',), state_map=state_map)
         wft.setDefaultChain('simple_publication_workflow')
-
-    # we must re-create criterium on review_state who use selection_list
-    # (published_and_hidden and published_and_shown) by single published value
-    # for news
-    if hasattr(portal, 'news') and hasattr(portal.news, 'aggregator'):
-        changeStateCriteria(portal.news.aggregator, 'uninstall')
-    # for event
-    if hasattr(portal, 'events') and hasattr(portal.events, 'aggregator'):
-        changeStateCriteria(portal.events.aggregator, 'uninstall')
-
-
-def changeStateCriteria(aggregator, step):
-    criteria = aggregator.listCriteria()
-    # 1 : delete old criterions and get expires, end fields
-    isexpires_field = False
-    isend_field = False
-    for criterion in criteria:
-        if (criterion.field == 'review_state') and (criterion.archetype_name != 'Sort Criterion'):
-            aggregator.deleteCriterion(criterion.getId())
-        if (criterion.field == 'start') and (criterion.archetype_name != 'Sort Criterion'):
-            aggregator.deleteCriterion(criterion.getId())
-        if criterion.field == 'end':
-            isend_field = True
-        if criterion.field == 'expires':
-            isexpires_field = True
-    # 2 : create new 'cpskin' criterion
-    if step == 'install':
-        criterion = aggregator.addCriterion(field='review_state', criterion_type='ATSelectionCriterion')
-        criterion.setValue(('published_and_hidden', 'published_and_shown'))
-    else:
-        criterion = aggregator.addCriterion(field='review_state', criterion_type='ATSimpleStringCriterion')
-        criterion.setValue('published')
-    # 3 : adapt news and events criterion
-    parentObj = aggregator.aq_inner.aq_parent
-    if parentObj.id == 'events' and not isend_field:
-        criterion = aggregator.addCriterion(field='end', criterion_type='ATFriendlyDateCriteria')
-        criterion.setValue(None)
-        criterion.setOperation('more')
-        criterion.setDateRange('+')
-    if parentObj.id == 'news' and not isexpires_field:
-        criterion = aggregator.addCriterion(field='expires', criterion_type='ATFriendlyDateCriteria')
-        criterion.setValue(None)
-        criterion.setOperation('more')
-        criterion.setDateRange('+')
