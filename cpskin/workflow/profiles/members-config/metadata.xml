@@ -2,7 +2,6 @@
 <metadata>
   <dependencies>
    <dependency>profile-cpskin.workflow:default</dependency>
-   <dependency>profile-cpskin.core:members-configuration</dependency>
    <dependency>profile-Products.CMFPlacefulWorkflow:CMFPlacefulWorkflow</dependency>
   </dependencies>
 </metadata>

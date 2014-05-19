@@ -2,6 +2,5 @@
 <metadata>
   <dependencies>
    <dependency>profile-plone.resource:default</dependency>
-   <dependency>profile-cpskin.core:default</dependency>
   </dependencies>
 </metadata>
