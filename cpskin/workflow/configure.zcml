@@ -5,7 +5,6 @@
            i18n_domain="cpskin">
 
   <!-- Dependencies -->
-  <include package="cpskin.core" />
   <include package="cpskin.locales" />
 
   <!-- We should add a condition on this : members-configuration profile must be installed -->

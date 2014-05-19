@@ -39,7 +39,6 @@ setup(name='cpskin.workflow',
           'setuptools',
           'Plone',
           'Products.CMFPlacefulWorkflow',
-          'cpskin.core',
           'cpskin.locales'
       ],
       extras_require=dict(

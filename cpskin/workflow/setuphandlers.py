@@ -1,12 +1,8 @@
 import logging
 
-from plone.app.collection.collection import Collection
 from plone.app.workflow.remap import remap_workflow
 
 from Products.CMFCore.utils import getToolByName
-
-from cpskin.core.utils import convertCollection
-from cpskin.core.utils import reactivateTopic
 
 logger = logging.getLogger('cpskin.workflow')
 
@@ -17,8 +13,6 @@ def installWorkflows(context):
 
     logger.info('Installing workflows')
     portal = context.getSite()
-
-    reactivateTopic()
 
     # we must re-create criterium on review_state who use single published
     # value by selection_list (published_and_hidden and published_and_shown)
@@ -101,8 +95,6 @@ def uninstallWorkflows(context):
 
 
 def changeStateCriteria(aggregator, step):
-    if isinstance(aggregator, Collection):
-        aggregator = convertCollection(aggregator)
     criteria = aggregator.listCriteria()
     # 1 : delete old criterions and get expires, end fields
     isexpires_field = False
