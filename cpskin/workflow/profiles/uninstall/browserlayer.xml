@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="cpskin.workflow" remove="True" />
+    <layer name="cpskin.workflow.members" remove="True" />
+</layers>
