@@ -72,3 +72,20 @@ class TestProfiles(unittest.TestCase):
         applyProfile(self.portal, 'cpskin.workflow:uninstall')
         state = api.content.get_state(obj=obj)
         self.assertEqual(state, 'private')
+
+    def test_reinstall_profile(self):
+        from plone import api
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        login(self.portal, TEST_USER_NAME)
+        obj = api.content.create(type='Document',
+                                 title='My private Content',
+                                 container=self.portal)
+        api.content.transition(obj=obj, transition='publish_and_hide')
+        state = api.content.get_state(obj=obj)
+        self.assertEqual(state, 'published_and_hidden')
+        applyProfile(self.portal, 'cpskin.workflow:uninstall')
+        state = api.content.get_state(obj=obj)
+        self.assertEqual(state, 'published')
+        applyProfile(self.portal, 'cpskin.workflow:default')
+        state = api.content.get_state(obj=obj)
+        self.assertEqual(state, 'published_and_hidden')
