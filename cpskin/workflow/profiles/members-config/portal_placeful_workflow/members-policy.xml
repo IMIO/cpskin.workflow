@@ -24,7 +24,7 @@
   <type default_chain="true" type_id="Event"/>
   <type default_chain="true" type_id="File"/>
   <type type_id="Folder">
-   <bound-workflow workflow_id="readonly_workflow"/>
+   <bound-workflow workflow_id="cpskin_readonly_workflow"/>
   </type>
   <type default_chain="true" type_id="Image"/>
   <type default_chain="true" type_id="Link"/>

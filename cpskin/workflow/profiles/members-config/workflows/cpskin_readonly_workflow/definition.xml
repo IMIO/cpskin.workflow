@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <dc-workflow xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-             workflow_id="readonly_workflow"
+             workflow_id="cpskin_readonly_workflow"
              title="Owner readonly, Single State Workflow"
              description="- Essentially a workflow with no transitions, with a private state. Owner cannot modify."
              state_variable="review_state"
