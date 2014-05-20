@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<layers>
+    <layer name="cpskin.workflow" interface="cpskin.workflow.interfaces.ICPSkinWorkflowLayer" />
+</layers>
