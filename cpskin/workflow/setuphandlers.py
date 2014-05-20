@@ -44,12 +44,18 @@ def configureMembers(context):
 
     logger.info('Configuring members')
     portal = context.getSite()
+    wft = getToolByName(portal, 'portal_workflow')
 
     # Publish Members
     members = portal['Members']
     wft = portal.portal_workflow
     if wft.getInfoFor(members, 'review_state') == 'private':
         wft.doActionFor(members, 'publish_and_hide')
+
+    # Publish help page
+    if members.hasObject('help-page'):
+        helpPage = members['help-page']
+        wft.doActionFor(helpPage, 'publish_and_hide')
 
 
 def uninstallWorkflows(context):
