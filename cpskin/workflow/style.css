@@ -1,4 +1,4 @@
-.state-created {
+#contentActionMenus .state-created {
     background-color: #FF0000;
     border: 0.1em solid #FF0000;
     border-radius: 0.5em;
@@ -6,7 +6,7 @@
     padding: 0 0.5em;
 }
 
-.state-pending {
+#contentActionMenus .state-pending {
     background-color: #FFA500;
     border: 0.1em solid #FFA500;
     border-radius: 0.5em;
@@ -14,7 +14,7 @@
     padding: 0 0.5em;
 }
 
-.state-published_and_shown {
+#contentActionMenus .state-published_and_shown {
     background-color: #0000FF;
     border: 0.1em solid #0000FF;
     border-radius: 0.5em;
@@ -22,7 +22,7 @@
     padding: 0 0.5em;
 }
 
-.state-published_and_hidden {
+#contentActionMenus .state-published_and_hidden {
     background-color: #808080;
     border: 0.1em solid #808080;
     border-radius: 0.5em;
