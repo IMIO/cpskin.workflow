@@ -2,7 +2,7 @@
 <import-steps>
   <import-step id="cpskin.workflow.members-config"
                handler="cpskin.workflow.setuphandlers.configureMembers"
-               title="cpskin.workflows: members configuration import step">
+               title="cpskin.workflow: members configuration import step">
     <dependency step="workflow" />
   </import-step>
 </import-steps>

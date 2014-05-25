@@ -2,6 +2,6 @@
 <import-steps>
   <import-step id="cpskin.workflow.uninstall"
                handler="cpskin.workflow.setuphandlers.uninstallWorkflows"
-               title="cpskin.workflows: uninstall import step">
+               title="cpskin.workflow: uninstall import step">
   </import-step>
 </import-steps>

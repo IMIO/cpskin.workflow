@@ -18,7 +18,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="cpskin.workflows"
+      title="cpskin.workflow"
       directory="profiles/default"
       description="Installs CPSkin workflows"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -27,7 +27,7 @@
 
   <genericsetup:registerProfile
       name="members-configuration"
-      title="cpskin.workflows: members configuration"
+      title="cpskin.workflow: members configuration"
       directory="profiles/members-config"
       description="Installs CPSkin workflows with members configuration"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -36,7 +36,7 @@
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="cpskin.workflows: uninstall"
+      title="cpskin.workflow: uninstall"
       directory="profiles/uninstall"
       description="Uninstalls CPSkin workflows"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

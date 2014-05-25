@@ -6,7 +6,7 @@
 
   <genericsetup:registerProfile
       name="testing"
-      title="cpskin.workflows: testing"
+      title="cpskin.workflow: testing"
       directory="profiles/testing"
       description="Installs CPSkin workflows test profile"
       provides="Products.GenericSetup.interfaces.EXTENSION"
