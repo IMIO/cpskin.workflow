@@ -10,6 +10,14 @@
   <subscriber for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
               handler=".events.user_initial_logged_in" />
 
+  <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                   zope.lifecycleevent.interfaces.IObjectModifiedEvent"
+              handler=".events.object_modified" />
+
+  <subscriber for="Products.Archetypes.interfaces.IBaseContent
+                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
+              handler=".events.state_modified" />
+
   <browser:resource
       name="cpskin.workflow.style.css"
       file="style.css"

@@ -4,6 +4,7 @@ from Products.CMFPlone.utils import base_hasattr
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlacefulWorkflow.PlacefulWorkflowTool import WorkflowPolicyConfig_id
 
+from cpskin.workflow.interfaces import ICPSkinWorkflowLayer
 from cpskin.workflow.interfaces import ICPSkinWorkflowWithMembersLayer
 
 
@@ -47,3 +48,41 @@ def user_initial_logged_in(event):
         home.manage_permission('Review portal content',
                                ('Manager', 'Site Administrator', 'Reviewer'),
                                acquire=0)
+
+
+def object_modified(obj, event):
+    """
+    When a content is changed : check the coherence between WF state and
+    'exclude from nav' parameter
+    Applies only if default profile has been installed
+    """
+    request = getattr(obj, "REQUEST", None)
+    if not ICPSkinWorkflowLayer.providedBy(request):
+        return
+
+    state = api.content.get_state(obj=obj)
+    excludeFromNav = obj.getExcludeFromNav()
+
+    if state == 'published_and_hidden' and not excludeFromNav:
+        api.content.transition(obj=obj, transition='publish_and_show')
+    elif state == 'published_and_shown' and excludeFromNav:
+        api.content.transition(obj=obj, transition='publish_and_hide')
+
+
+def state_modified(obj, event):
+    """
+    When a content is published (shown or hidden from nav) :
+    check the coherence between WF state and 'exclude from nav' parameter
+    Applies only if default profile has been installed
+    """
+    request = getattr(obj, "REQUEST", None)
+    if not ICPSkinWorkflowLayer.providedBy(request):
+        return
+
+    state = event.new_state.id
+    excludeFromNav = obj.getExcludeFromNav()
+
+    if state == 'published_and_hidden' and not excludeFromNav:
+        obj.setExcludeFromNav(True)
+    elif state == 'published_and_shown' and excludeFromNav:
+        obj.setExcludeFromNav(False)
