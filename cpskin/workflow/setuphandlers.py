@@ -14,7 +14,11 @@ def installWorkflows(context):
     logger.info('Installing workflows')
     portal = context.getSite()
 
-    # we change the default workflow
+    # We configure the calendar
+    pc = getToolByName(portal, 'portal_calendar')
+    pc.calendar_states = ('published_and_hidden', 'published_and_shown')
+
+    # We change the default workflow
     logger.info("Adapting default workflow and existing objects")
     wft = getToolByName(portal, 'portal_workflow')
     if wft.getDefaultChain() == ('simple_publication_workflow',):
@@ -57,7 +61,11 @@ def uninstallWorkflows(context):
     logger.info('Uninstalling workflows')
     portal = context.getSite()
 
-    # we change the default workflow
+    # We configure the calendar
+    pc = getToolByName(portal, 'portal_calendar')
+    pc.calendar_states = ('published')
+
+    # We change the default workflow
     logger.info("Adapting default workflow and existing objects")
     wft = getToolByName(portal, 'portal_workflow')
     if wft.getDefaultChain() and wft.getDefaultChain()[0].startswith('cpskin'):
@@ -71,9 +79,9 @@ def uninstallWorkflows(context):
 def changeDefaultWorkflowAndRemap(portal, state_map, new_wf):
     wft = getToolByName(portal, 'portal_workflow')
     tt = getToolByName(portal, 'portal_types')
-    # list types with a non default workflow
+    # List types with a non default workflow
     nondefault = [info[0] for info in wft.listChainOverrides()]
-    # list types with the default workflow
+    # List types with the default workflow
     type_ids = [type for type in tt.listContentTypes() if type not in nondefault]
     wft.setChainForPortalTypes(type_ids, wft.getDefaultChain())
     wft.setDefaultChain(new_wf)
