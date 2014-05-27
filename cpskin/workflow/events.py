@@ -59,14 +59,15 @@ def object_modified(obj, event):
     request = getattr(obj, "REQUEST", None)
     if not ICPSkinWorkflowLayer.providedBy(request):
         return
+    pw = getToolByName(obj, 'portal_workflow')
+    if pw.getWorkflowsFor(obj):
+        state = api.content.get_state(obj=obj)
+        excludeFromNav = obj.getExcludeFromNav()
 
-    state = api.content.get_state(obj=obj)
-    excludeFromNav = obj.getExcludeFromNav()
-
-    if state == 'published_and_hidden' and not excludeFromNav:
-        api.content.transition(obj=obj, transition='publish_and_show')
-    elif state == 'published_and_shown' and excludeFromNav:
-        api.content.transition(obj=obj, transition='publish_and_hide')
+        if state == 'published_and_hidden' and not excludeFromNav:
+            api.content.transition(obj=obj, transition='publish_and_show')
+        elif state == 'published_and_shown' and excludeFromNav:
+            api.content.transition(obj=obj, transition='publish_and_hide')
 
 
 def state_modified(obj, event):
