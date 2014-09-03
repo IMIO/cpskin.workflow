@@ -17,3 +17,5 @@ parts/
 dist/
 var/
 src/
+include/
+lib/
