@@ -4,10 +4,11 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add dependency workflow to import_step.xml.
+  [bsuttor]
 
 
 0.1 (2014-07-02)
 ----------------
 
-- Nothing changed yet.
+- Initial release
