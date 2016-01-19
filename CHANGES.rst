@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.2 (unreleased)
+0.2 (2016-01-19)
 ----------------
 
 - Add dependency workflow to import_step.xml.
