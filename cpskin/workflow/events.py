@@ -1,11 +1,10 @@
-from plone import api
-
-from Products.CMFPlone.utils import base_hasattr
-from Products.CMFCore.utils import getToolByName
-from Products.CMFPlacefulWorkflow.PlacefulWorkflowTool import WorkflowPolicyConfig_id
-
 from cpskin.workflow.interfaces import ICPSkinWorkflowLayer
 from cpskin.workflow.interfaces import ICPSkinWorkflowWithMembersLayer
+from plone import api
+from plone.dexterity.interfaces import IDexterityFTI
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlacefulWorkflow.PlacefulWorkflowTool import WorkflowPolicyConfig_id
+from Products.CMFPlone.utils import base_hasattr
 
 
 def user_initial_logged_in(event):
@@ -62,12 +61,20 @@ def object_modified(obj, event):
     pw = getToolByName(obj, 'portal_workflow')
     if pw.getWorkflowsFor(obj):
         state = api.content.get_state(obj=obj)
-        excludeFromNav = obj.getExcludeFromNav()
+        if not IDexterityFTI.providedBy(obj):
+            excludeFromNav = obj.getExcludeFromNav()
 
-        if state == 'published_and_hidden' and not excludeFromNav:
-            api.content.transition(obj=obj, transition='publish_and_show')
-        elif state == 'published_and_shown' and excludeFromNav:
-            api.content.transition(obj=obj, transition='publish_and_hide')
+            if state == 'published_and_hidden' and not excludeFromNav:
+                api.content.transition(obj=obj, transition='publish_and_show')
+            elif state == 'published_and_shown' and excludeFromNav:
+                api.content.transition(obj=obj, transition='publish_and_hide')
+        else:
+            excludeFromNav = obj.exclude_from_nav
+
+            if state == 'published_and_hidden' and not excludeFromNav:
+                api.content.transition(obj=obj, transition='publish_and_show')
+            elif state == 'published_and_shown' and excludeFromNav:
+                api.content.transition(obj=obj, transition='publish_and_hide')
 
 
 def state_modified(obj, event):
@@ -81,9 +88,17 @@ def state_modified(obj, event):
         return
 
     state = event.new_state.id
-    excludeFromNav = obj.getExcludeFromNav()
+    if not IDexterityFTI.providedBy(obj):
+        excludeFromNav = obj.getExcludeFromNav()
 
-    if state == 'published_and_hidden' and not excludeFromNav:
-        obj.setExcludeFromNav(True)
-    elif state == 'published_and_shown' and excludeFromNav:
-        obj.setExcludeFromNav(False)
+        if state == 'published_and_hidden' and not excludeFromNav:
+            obj.setExcludeFromNav(True)
+        elif state == 'published_and_shown' and excludeFromNav:
+            obj.setExcludeFromNav(False)
+    else:
+        excludeFromNav = obj.exclude_from_nav
+
+        if state == 'published_and_hidden' and not excludeFromNav:
+            obj.exclude_from_nav = True
+        elif state == 'published_and_shown' and excludeFromNav:
+            obj.exclude_from_nav = False
