@@ -4,7 +4,8 @@ Changelog
 0.3 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add dexterity support.
+  [bsuttor]
 
 
 0.2 (2016-01-19)
