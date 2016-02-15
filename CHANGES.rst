@@ -4,7 +4,8 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add migration of geo objects.
+  [bsuttor]
 
 
 0.3 (2016-02-12)
