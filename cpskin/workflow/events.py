@@ -49,6 +49,45 @@ def user_initial_logged_in(event):
                                acquire=0)
 
 
+def object_modified_at(obj, event):
+    """
+    When a content is changed : check the coherence between WF state and
+    'exclude from nav' parameter
+    Applies only if default profile has been installed
+    """
+    request = getattr(obj, "REQUEST", None)
+    if not ICPSkinWorkflowLayer.providedBy(request):
+        return
+    pw = getToolByName(obj, 'portal_workflow')
+    if pw.getWorkflowsFor(obj):
+        state = api.content.get_state(obj=obj)
+        excludeFromNav = obj.getExcludeFromNav()
+
+        if state == 'published_and_hidden' and not excludeFromNav:
+            api.content.transition(obj=obj, transition='publish_and_show')
+        elif state == 'published_and_shown' and excludeFromNav:
+            api.content.transition(obj=obj, transition='publish_and_hide')
+
+
+def state_modified_at(obj, event):
+    """
+    When a content is published (shown or hidden from nav) :
+    check the coherence between WF state and 'exclude from nav' parameter
+    Applies only if default profile has been installed
+    """
+    request = getattr(obj, "REQUEST", None)
+    if not ICPSkinWorkflowLayer.providedBy(request):
+        return
+
+    state = event.new_state.id
+    excludeFromNav = obj.getExcludeFromNav()
+    if state == 'published_and_hidden' and not excludeFromNav:
+        obj.setExcludeFromNav(True)
+    elif state == 'published_and_shown' and excludeFromNav:
+        obj.setExcludeFromNav(False)
+
+
+# Dexterity
 def object_modified(obj, event):
     """
     When a content is changed : check the coherence between WF state and
@@ -61,20 +100,12 @@ def object_modified(obj, event):
     pw = getToolByName(obj, 'portal_workflow')
     if pw.getWorkflowsFor(obj):
         state = api.content.get_state(obj=obj)
-        if not IDexterityFTI.providedBy(obj):
-            excludeFromNav = obj.getExcludeFromNav()
+        exclude_from_nav = obj.exclude_from_nav
 
-            if state == 'published_and_hidden' and not excludeFromNav:
-                api.content.transition(obj=obj, transition='publish_and_show')
-            elif state == 'published_and_shown' and excludeFromNav:
-                api.content.transition(obj=obj, transition='publish_and_hide')
-        else:
-            excludeFromNav = obj.exclude_from_nav
-
-            if state == 'published_and_hidden' and not excludeFromNav:
-                api.content.transition(obj=obj, transition='publish_and_show')
-            elif state == 'published_and_shown' and excludeFromNav:
-                api.content.transition(obj=obj, transition='publish_and_hide')
+        if state == 'published_and_hidden' and not exclude_from_nav:
+            api.content.transition(obj=obj, transition='publish_and_show')
+        elif state == 'published_and_shown' and exclude_from_nav:
+            api.content.transition(obj=obj, transition='publish_and_hide')
 
 
 def state_modified(obj, event):
@@ -86,19 +117,10 @@ def state_modified(obj, event):
     request = getattr(obj, "REQUEST", None)
     if not ICPSkinWorkflowLayer.providedBy(request):
         return
-
     state = event.new_state.id
-    if not IDexterityFTI.providedBy(obj):
-        excludeFromNav = obj.getExcludeFromNav()
+    exclude_from_nav = obj.exclude_from_nav
 
-        if state == 'published_and_hidden' and not excludeFromNav:
-            obj.setExcludeFromNav(True)
-        elif state == 'published_and_shown' and excludeFromNav:
-            obj.setExcludeFromNav(False)
-    else:
-        excludeFromNav = obj.exclude_from_nav
-
-        if state == 'published_and_hidden' and not excludeFromNav:
-            obj.exclude_from_nav = True
-        elif state == 'published_and_shown' and excludeFromNav:
-            obj.exclude_from_nav = False
+    if state == 'published_and_hidden' and not exclude_from_nav:
+        obj.exclude_from_nav = True
+    elif state == 'published_and_shown' and exclude_from_nav:
+        obj.exclude_from_nav = False
