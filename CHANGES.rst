@@ -4,7 +4,8 @@ Changelog
 0.4 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add event on dexterity content for setting exclude_from_nav.
+  [bsuttor]
 
 
 0.3 (2016-02-12)
