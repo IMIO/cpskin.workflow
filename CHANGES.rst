@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.4 (unreleased)
+0.4 (2016-05-10)
 ----------------
 
 - Remove old AT references into members-policy.
