@@ -1,4 +1,4 @@
-import unittest2 as unittest
+import unittest
 
 from plone.app.testing import (applyProfile, login, TEST_USER_NAME, setRoles,
                                TEST_USER_ID)

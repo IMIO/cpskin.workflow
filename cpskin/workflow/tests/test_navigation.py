@@ -1,4 +1,4 @@
-import unittest2 as unittest
+import unittest
 from plone.testing.z2 import Browser
 
 from cpskin.workflow.testing import CPSKIN_WORKFLOW_FUNCTIONAL_TESTING
