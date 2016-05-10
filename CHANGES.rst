@@ -4,6 +4,9 @@ Changelog
 0.4 (unreleased)
 ----------------
 
+- Remove old AT references into members-policy.
+  [bsuttor]
+
 - Add event on dexterity content for setting exclude_from_nav.
   [bsuttor]
 
