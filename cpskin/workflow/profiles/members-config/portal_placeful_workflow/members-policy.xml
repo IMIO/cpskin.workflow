@@ -5,19 +5,6 @@
   <default>
    <bound-workflow workflow_id="simple_publication_workflow"/>
   </default>
-  <type default_chain="true" type_id="ATBooleanCriterion"/>
-  <type default_chain="true" type_id="ATCurrentAuthorCriterion"/>
-  <type default_chain="true" type_id="ATDateCriteria"/>
-  <type default_chain="true" type_id="ATDateRangeCriterion"/>
-  <type default_chain="true" type_id="ATListCriterion"/>
-  <type default_chain="true" type_id="ATPathCriterion"/>
-  <type default_chain="true" type_id="ATPortalTypeCriterion"/>
-  <type default_chain="true" type_id="ATReferenceCriterion"/>
-  <type default_chain="true" type_id="ATRelativePathCriterion"/>
-  <type default_chain="true" type_id="ATSelectionCriterion"/>
-  <type default_chain="true" type_id="ATSimpleIntCriterion"/>
-  <type default_chain="true" type_id="ATSimpleStringCriterion"/>
-  <type default_chain="true" type_id="ATSortCriterion"/>
   <type default_chain="true" type_id="Collection"/>
   <type default_chain="true" type_id="Discussion Item"/>
   <type default_chain="true" type_id="Document"/>
@@ -31,6 +18,5 @@
   <type default_chain="true" type_id="News Item"/>
   <type default_chain="true" type_id="Plone Site"/>
   <type default_chain="true" type_id="TempFolder"/>
-  <type default_chain="true" type_id="Topic"/>
  </bindings>
 </object>
