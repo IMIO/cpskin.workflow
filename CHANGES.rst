@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.5 (unreleased)
+0.5 (2016-07-27)
 ----------------
 
 - Add new Private state for cpskin_workflow (#14475)
