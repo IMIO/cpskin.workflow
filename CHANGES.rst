@@ -4,6 +4,9 @@ Changelog
 0.5 (unreleased)
 ----------------
 
+- Add new Private state for cpskin_workflow (#14475)
+  [laulaz]
+
 - Fix tests
   [laulaz]
 

@@ -6,6 +6,14 @@
     padding: 0 0.5em;
 }
 
+#contentActionMenus .state-private {
+    background-color: #FF6E00;
+    border: 0.1em solid #FF5500;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
+}
+
 #contentActionMenus .state-pending {
     background-color: #FFA500;
     border: 0.1em solid #FFA500;
