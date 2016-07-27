@@ -20,7 +20,7 @@ class TestNavigation(unittest.TestCase):
         self.browser.getControl(name='__ac_name').value = 'test_manager'
         self.browser.getControl(name='__ac_password').value = 'secret'
         self.browser.getControl(name='submit').click()
-        self.browser.getLink('Continue to the Site home page').click()
+        self.browser.getLink('Continue to the Plone site home page').click()
 
     def testObjectModification(self):
         browser = self.browser

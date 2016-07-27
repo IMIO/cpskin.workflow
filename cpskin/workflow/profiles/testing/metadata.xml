@@ -2,6 +2,7 @@
 <metadata>
   <dependencies>
    <dependency>profile-Products.CMFPlone:plone</dependency>
+   <dependency>profile-Products.CMFPlone:testfixture</dependency>
    <dependency>profile-Products.CMFPlone:plone-content</dependency>
    <dependency>profile-cpskin.workflow:default</dependency>
   </dependencies>

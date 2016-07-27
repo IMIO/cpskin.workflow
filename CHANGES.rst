@@ -4,7 +4,8 @@ Changelog
 0.5 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Fix tests
+  [laulaz]
 
 
 0.4 (2016-05-10)
