@@ -4,7 +4,8 @@ Changelog
 0.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
+- Add Dexterity tests.
+  [bsuttor]
 
 
 0.5 (2016-07-27)
