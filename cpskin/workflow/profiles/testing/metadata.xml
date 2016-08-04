@@ -1,9 +1,6 @@
 <?xml version="1.0"?>
 <metadata>
   <dependencies>
-   <dependency>profile-Products.CMFPlone:plone</dependency>
-   <dependency>profile-Products.CMFPlone:testfixture</dependency>
-   <dependency>profile-Products.CMFPlone:plone-content</dependency>
    <dependency>profile-cpskin.workflow:default</dependency>
   </dependencies>
 </metadata>

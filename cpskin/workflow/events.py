@@ -29,7 +29,8 @@ def user_initial_logged_in(event):
 
     # XXX see if refactoring is possible
     if not base_hasattr(home, WorkflowPolicyConfig_id):
-        home.manage_addProduct['CMFPlacefulWorkflow'].manage_addWorkflowPolicyConfig()
+        home.manage_addProduct[
+            'CMFPlacefulWorkflow'].manage_addWorkflowPolicyConfig()
         pc = getattr(home, WorkflowPolicyConfig_id)
         pc.setPolicyIn('members-policy')
         pc.setPolicyBelow('members-policy')
@@ -123,7 +124,6 @@ def state_modified(obj, event):
     exclude_from_nav = getattr(obj, 'exclude_from_nav', None)
     if exclude_from_nav is None:
         return
-    
 
     if state == 'published_and_hidden' and not exclude_from_nav:
         obj.exclude_from_nav = True

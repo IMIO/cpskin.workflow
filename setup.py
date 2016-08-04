@@ -40,10 +40,11 @@ setup(name='cpskin.workflow',
           'plone.api',
           'Plone',
           'Products.CMFPlacefulWorkflow',
-          'cpskin.locales'
+          'cpskin.locales',
+          'plone.app.contenttypes'
       ],
       extras_require=dict(
           test=['plone.app.testing'],
       ),
       entry_points={},
-)
+      )

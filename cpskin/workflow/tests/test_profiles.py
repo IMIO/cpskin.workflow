@@ -5,12 +5,12 @@ from plone.app.testing import (applyProfile, login, TEST_USER_NAME, setRoles,
 
 from Products.CMFCore.utils import getToolByName
 
-from cpskin.workflow.testing import CPSKIN_WORKFLOW_INTEGRATION_TESTING
+from cpskin.workflow.testing import CPSKIN_AT_WORKFLOW_FUNCTIONAL_TESTING
 
 
 class TestProfiles(unittest.TestCase):
 
-    layer = CPSKIN_WORKFLOW_INTEGRATION_TESTING
+    layer = CPSKIN_AT_WORKFLOW_FUNCTIONAL_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

@@ -3,6 +3,7 @@
 
   <include file="configure.zcml" />
   <include package="Products.CMFPlacefulWorkflow" />
+  <include package="plone.app.contenttypes" />
 
   <genericsetup:registerProfile
       name="testing"

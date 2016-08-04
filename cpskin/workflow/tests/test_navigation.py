@@ -1,12 +1,12 @@
 import unittest
 from plone.testing.z2 import Browser
 
-from cpskin.workflow.testing import CPSKIN_WORKFLOW_FUNCTIONAL_TESTING
+from cpskin.workflow.testing import CPSKIN_AT_WORKFLOW_FUNCTIONAL_TESTING
 
 
 class TestNavigation(unittest.TestCase):
 
-    layer = CPSKIN_WORKFLOW_FUNCTIONAL_TESTING
+    layer = CPSKIN_AT_WORKFLOW_FUNCTIONAL_TESTING
 
     def setUp(self):
         """
@@ -20,7 +20,7 @@ class TestNavigation(unittest.TestCase):
         self.browser.getControl(name='__ac_name').value = 'test_manager'
         self.browser.getControl(name='__ac_password').value = 'secret'
         self.browser.getControl(name='submit').click()
-        self.browser.getLink('Continue to the Plone site home page').click()
+        self.browser.getLink('Continue to the Site home page').click()
 
     def testObjectModification(self):
         browser = self.browser
@@ -28,21 +28,26 @@ class TestNavigation(unittest.TestCase):
         browser.getControl('Title').value = u"Test Page"
         browser.getControl('Save').click()
         self.failUnless('Changes saved' in browser.contents)
-        self.failUnless('<span class="state-created">Created</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-created">Created</span>' in browser.contents)
         browser.getLink(id='workflow-transition-publish_and_show').click()
-        self.failUnless('<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
         browser.getLink(text='Edit').click()
+
         self.assertEquals(browser.getControl(name='excludeFromNav:boolean').value,
                           False)
         browser.getControl(name='excludeFromNav:boolean').value = True
         browser.getControl('Save').click()
-        self.failUnless('<span class="state-published_and_hidden">Published and hidden</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-published_and_hidden">Published and hidden</span>' in browser.contents)
         browser.getLink(text='Edit').click()
         self.assertEquals(browser.getControl(name='excludeFromNav:boolean').value,
                           True)
         browser.getControl(name='excludeFromNav:boolean').value = False
         browser.getControl('Save').click()
-        self.failUnless('<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
 
     def testWorkflowModification(self):
         browser = self.browser
@@ -50,15 +55,18 @@ class TestNavigation(unittest.TestCase):
         browser.getControl('Title').value = u"Test Page"
         browser.getControl('Save').click()
         self.failUnless('Changes saved' in browser.contents)
-        self.failUnless('<span class="state-created">Created</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-created">Created</span>' in browser.contents)
         browser.getLink(id='workflow-transition-publish_and_show').click()
-        self.failUnless('<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-published_and_shown">Published and shown</span>' in browser.contents)
         browser.getLink(text='Edit').click()
         self.assertEquals(browser.getControl(name='excludeFromNav:boolean').value,
                           False)
         browser.getControl('Cancel').click()
         browser.getLink(id='workflow-transition-publish_and_hide').click()
-        self.failUnless('<span class="state-published_and_hidden">Published and hidden</span>' in browser.contents)
+        self.failUnless(
+            '<span class="state-published_and_hidden">Published and hidden</span>' in browser.contents)
         browser.getLink(text='Edit').click()
         self.assertEquals(browser.getControl(name='excludeFromNav:boolean').value,
                           True)
