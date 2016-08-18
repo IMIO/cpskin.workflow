@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6 (unreleased)
+0.6 (2016-08-18)
 ----------------
 
 - Add workflow for collective.contact contents with created / published states
