@@ -1,24 +1,21 @@
 # -*- coding: utf-8 -*-
 
-from ftw.upgrade.workflow import WorkflowChainUpdater
-from ftw.upgrade import UpgradeStep
+from plone.app.workflow.remap import remap_workflow
+from zope.component import queryUtility
+from zope.ramcache.interfaces.ram import IRAMCache
 
 
-class UpdateWorkflowChains(UpgradeStep):
-
-    def __call__(self):
-        query = {'portal_type': [
-            'held_position',
-            'organization',
-            'person',
-            'position',
-        ]}
-        objects = self.catalog_unrestricted_search(query, full_objects=True)
-
-        review_state_mapping = {
-            ('collective_contact_workflow', 'cpskin_collective_contact_workflow'): {
-                'active': 'published',
-                'deactivated': 'created'}}
-
-        with WorkflowChainUpdater(objects, review_state_mapping):
-            self.setup_install_profile('profile-cpskin.workflow:to1')
+def to_one(context):
+    context.runImportStepFromProfile('profile-cpskin.workflow:to1', 'workflow')
+    chain = ('cpskin_collective_contact_workflow',)
+    types = ('held_position',
+             'organization',
+             'person',
+             'position')
+    state_map = {'active': 'published',
+                  'deactivated': 'created'}
+    remap_workflow(context, type_ids=types, chain=chain,
+                   state_map=state_map)
+    util = queryUtility(IRAMCache)
+    if util is not None:
+        util.invalidateAll()

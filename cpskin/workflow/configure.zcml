@@ -76,8 +76,8 @@
 
   <genericsetup:upgradeStep
       title="CPSKIN Workflow: Add cpskin_collective_contact_workflow workflow"
-      description="Upgrade step to add new CPSkin workflow for collective.contact contents"
-      handler=".upgradehandlers.UpdateWorkflowChains"
+      description="Upgrade step to add new CPSkin workflow assigned to collective.contact contents"
+      handler=".upgradehandlers.to_one"
       source="*"
       destination="1"
       profile="cpskin.workflow:default"

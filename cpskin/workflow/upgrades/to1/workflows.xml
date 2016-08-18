@@ -3,19 +3,4 @@
 
     <object name="cpskin_collective_contact_workflow" meta_type="Workflow" />
 
-    <bindings>
-     <type type_id="held_position">
-      <bound-workflow workflow_id="cpskin_collective_contact_workflow"/>
-     </type>
-     <type type_id="organization">
-      <bound-workflow workflow_id="cpskin_collective_contact_workflow"/>
-     </type>
-     <type type_id="person">
-      <bound-workflow workflow_id="cpskin_collective_contact_workflow"/>
-     </type>
-     <type type_id="position">
-      <bound-workflow workflow_id="cpskin_collective_contact_workflow"/>
-     </type>
-    </bindings>
-
 </object>
