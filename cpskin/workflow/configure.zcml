@@ -60,4 +60,27 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+
+  <!-- Upgrade profiles -->
+  
+  <genericsetup:registerProfile
+      name="to1"
+      title="cpskin.workflow"
+      directory="upgrades/to1"
+      description="CPSKIN Workflow: upgrade to v1"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <!-- Upgrade steps -->
+
+  <genericsetup:upgradeStep
+      title="CPSKIN Workflow: Add cpskin_collective_contact_workflow workflow"
+      description="Upgrade step to add new CPSkin workflow for collective.contact contents"
+      handler=".upgradehandlers.UpdateWorkflowChains"
+      source="*"
+      destination="1"
+      profile="cpskin.workflow:default"
+      />
+
 </configure>

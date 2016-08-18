@@ -40,6 +40,7 @@ setup(name='cpskin.workflow',
           'plone.api',
           'Plone',
           'Products.CMFPlacefulWorkflow',
+          'ftw.upgrade',
           'cpskin.locales',
           'plone.app.contenttypes'
       ],

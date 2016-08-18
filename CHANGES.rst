@@ -4,6 +4,10 @@ Changelog
 0.6 (unreleased)
 ----------------
 
+- Add workflow for collective.contact contents with created / published states
+  to allow anonymous user to view published contents (#14368)
+  [laulaz]
+
 - Add Dexterity tests.
   [bsuttor]
 

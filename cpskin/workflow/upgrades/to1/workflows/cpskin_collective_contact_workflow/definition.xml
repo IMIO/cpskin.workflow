@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="cpskin_collective_contact_workflow"
+             title="CPSkin custom collective.contact Workflow"
+             description="
+- Simple workflow with Created and Published states for collective.contact contents.
+- Anonymous users can view published contents"
+             state_variable="review_state"
+             initial_state="created"
+             manager_bypass="False"
+             xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+             i18n:domain="plone"
+             i18n:attributes="title; description">
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="published" title="Published" i18n:attributes="title">
+  <exit-transition transition_id="back_to_created"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Member</permission-role>
+   <permission-role>Site Administrator</permission-role>
+   <permission-role>Anonymous</permission-role>
+  </permission-map>
+ </state>
+ <state state_id="created" title="Created" i18n:attributes="title">
+  <exit-transition transition_id="publish"/>
+  <permission-map name="Access contents information" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View" acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Owner</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
+ <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="" category="workflow" icon="" i18n:translate="">Publish</action>
+  <description>The object will be visible.</description>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="back_to_created" title="Back to created" new_state="created" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+  <action url="" category="workflow" icon="" i18n:translate="">Back to created</action>
+  <description>The object will no longer be visible in typeahead lists</description>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <worklist worklist_id="reviewer_queue" title="">
+  <description>Reviewer tasks</description>
+  <action url="%(portal_url)s/search?review_state=pending" category="global" icon="">Pending (%(count)d)</action>
+  <guard>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+  <match name="review_state" values="pending"/>
+ </worklist>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the previous transition</description>
+  <default>
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>
