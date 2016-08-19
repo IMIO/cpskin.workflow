@@ -12,8 +12,8 @@ def to_one(context):
              'organization',
              'person',
              'position')
-    state_map = {'active': 'published',
-                  'deactivated': 'created'}
+    state_map = {'active': 'active',
+                 'deactivated': 'deactivated'}
     remap_workflow(context, type_ids=types, chain=chain,
                    state_map=state_map)
     util = queryUtility(IRAMCache)

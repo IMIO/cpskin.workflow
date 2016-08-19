@@ -4,7 +4,8 @@ Changelog
 0.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix collective.contact features by keeping states ids in workflow
+  [laulaz]
 
 
 0.6 (2016-08-18)

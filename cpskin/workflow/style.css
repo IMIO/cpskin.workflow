@@ -6,6 +6,14 @@
     padding: 0 0.5em;
 }
 
+#contentActionMenus .state-deactivated {
+    background-color: #FF0000;
+    border: 0.1em solid #FF0000;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
+}
+
 #contentActionMenus .state-private {
     background-color: #FF6E00;
     border: 0.1em solid #FF5500;
@@ -31,6 +39,14 @@
 }
 
 #contentActionMenus .state-published_and_hidden {
+    background-color: #808080;
+    border: 0.1em solid #808080;
+    border-radius: 0.5em;
+    color: #FFFFFF !important;
+    padding: 0 0.5em;
+}
+
+#contentActionMenus .state-active {
     background-color: #808080;
     border: 0.1em solid #808080;
     border-radius: 0.5em;

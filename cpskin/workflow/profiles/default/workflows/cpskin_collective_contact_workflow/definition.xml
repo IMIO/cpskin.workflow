@@ -5,7 +5,7 @@
 - Simple workflow with Created and Published states for collective.contact contents.
 - Anonymous users can view published contents"
              state_variable="review_state"
-             initial_state="created"
+             initial_state="deactivated"
              manager_bypass="False"
              xmlns:i18n="http://xml.zope.org/namespaces/i18n"
              i18n:domain="plone"
@@ -13,7 +13,7 @@
  <permission>Access contents information</permission>
  <permission>Modify portal content</permission>
  <permission>View</permission>
- <state state_id="published" title="Published" i18n:attributes="title">
+ <state state_id="active" title="Published" i18n:attributes="title">
   <exit-transition transition_id="back_to_created"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
@@ -38,7 +38,7 @@
    <permission-role>Anonymous</permission-role>
   </permission-map>
  </state>
- <state state_id="created" title="Created" i18n:attributes="title">
+ <state state_id="deactivated" title="Created" i18n:attributes="title">
   <exit-transition transition_id="publish"/>
   <permission-map name="Access contents information" acquired="False">
    <permission-role>Manager</permission-role>
@@ -59,14 +59,14 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
- <transition transition_id="publish" title="Publish" new_state="published" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+ <transition transition_id="publish" title="Publish" new_state="active" trigger="USER" before_script="" after_script="" i18n:attributes="title">
   <action url="" category="workflow" icon="" i18n:translate="">Publish</action>
   <description>The object will be visible.</description>
   <guard>
    <guard-permission>Modify portal content</guard-permission>
   </guard>
  </transition>
- <transition transition_id="back_to_created" title="Back to created" new_state="created" trigger="USER" before_script="" after_script="" i18n:attributes="title">
+ <transition transition_id="back_to_created" title="Back to created" new_state="deactivated" trigger="USER" before_script="" after_script="" i18n:attributes="title">
   <action url="" category="workflow" icon="" i18n:translate="">Back to created</action>
   <description>The object will no longer be visible in typeahead lists</description>
   <guard>
