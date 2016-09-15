@@ -63,7 +63,7 @@
  </state>
  <state state_id="created"
         title="Created"
-        i18n:attributes="title">
+        i18n:attributes="title; state_id">
   <exit-transition transition_id="hide"/>
   <exit-transition transition_id="publish_and_hide"/>
   <exit-transition transition_id="publish_and_show"/>
@@ -109,7 +109,7 @@
  </state>
  <state state_id="published_and_hidden"
         title="Published and hidden"
-        i18n:attributes="title">
+        i18n:attributes="title; state_id">
   <exit-transition transition_id="hide"/>
   <exit-transition transition_id="back_to_created"/>
   <exit-transition transition_id="publish_and_show"/>
@@ -154,7 +154,7 @@
  </state>
  <state state_id="published_and_shown"
         title="Published and shown"
-        i18n:attributes="title">
+        i18n:attributes="title; state_id">
   <exit-transition transition_id="hide"/>
   <exit-transition transition_id="back_to_created"/>
   <exit-transition transition_id="publish_and_hide"/>

@@ -4,7 +4,8 @@ Changelog
 0.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add missing i18n attributes for workflows state ids
+  [mpeeters]
 
 
 0.6.1 (2016-08-19)
