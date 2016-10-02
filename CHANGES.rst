@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.2 (unreleased)
+0.6.2 (2016-10-02)
 ------------------
 
 - Add missing i18n attributes for workflows state ids
