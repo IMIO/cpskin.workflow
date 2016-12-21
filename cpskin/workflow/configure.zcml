@@ -43,15 +43,6 @@
       />
 
   <genericsetup:registerProfile
-      name="members-configuration"
-      title="cpskin.workflow: members configuration"
-      directory="profiles/members-config"
-      description="Installs CPSkin workflows with members configuration"
-      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-  <genericsetup:registerProfile
       name="uninstall"
       title="cpskin.workflow: uninstall"
       directory="profiles/uninstall"
@@ -62,7 +53,7 @@
 
 
   <!-- Upgrade profiles -->
-  
+
   <genericsetup:registerProfile
       name="to1"
       title="cpskin.workflow"

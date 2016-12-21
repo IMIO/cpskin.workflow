@@ -1,4 +1,0 @@
-<?xml version="1.0"?>
-<layers>
-    <layer name="cpskin.workflow.members" interface="cpskin.workflow.interfaces.ICPSkinWorkflowWithMembersLayer" />
-</layers>
