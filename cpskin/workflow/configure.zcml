@@ -56,7 +56,7 @@
 
   <genericsetup:registerProfile
       name="to1"
-      title="cpskin.workflow"
+      title="cpskin.workflow to1"
       directory="upgrades/to1"
       description="CPSKIN Workflow: upgrade to v1"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
@@ -71,6 +71,15 @@
       handler=".upgradehandlers.to_one"
       source="*"
       destination="1"
+      profile="cpskin.workflow:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="CPSKIN Workflow: Add cpskin_collective_contact_workflow workflow"
+      description="Upgrade step to add new CPSkin workflow assigned to collective.contact contents"
+      handler=".upgradehandlers.to_one"
+      source="1"
+      destination="2"
       profile="cpskin.workflow:default"
       />
 

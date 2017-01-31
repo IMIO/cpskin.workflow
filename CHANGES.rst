@@ -4,7 +4,8 @@ Changelog
 0.6.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add usable upgrade step for adding collective.contact workflow.
+  [bsuttor]
 
 
 0.6.2 (2016-10-02)
