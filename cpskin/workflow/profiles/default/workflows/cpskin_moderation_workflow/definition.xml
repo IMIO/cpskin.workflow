@@ -6,7 +6,7 @@
              initial_state="created"
              description="
 - Used for CPSkin site
-- Has four states: Created, Pending, Published and hidden (from navigation) and Published and shown (in navigation)"
+- Has five states: Created, Private, Pending, Published and hidden (from navigation) and Published and shown (in navigation)"
              i18n:domain="plone"
              i18n:attributes="title; description">
  <permission>Access contents information</permission>
@@ -16,9 +16,67 @@
  <permission>Delete objects</permission>
  <permission>List folder contents</permission>
  <permission>Request review</permission>
+ <state state_id="private"
+        title="Private"
+        i18n:attributes="title">
+  <exit-transition transition_id="propose"/>
+  <exit-transition transition_id="back_to_created"/>
+  <exit-transition transition_id="publish_and_hide"/>
+  <exit-transition transition_id="publish_and_show"/>
+  <permission-map name="Access contents information"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Delete objects"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="List folder contents"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Modify portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Request review"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="Review portal content"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Reviewer</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+  <permission-map name="View"
+                  acquired="False">
+   <permission-role>Manager</permission-role>
+   <permission-role>Editor</permission-role>
+   <permission-role>Reader</permission-role>
+   <permission-role>Contributor</permission-role>
+   <permission-role>Site Administrator</permission-role>
+  </permission-map>
+ </state>
  <state state_id="created"
         title="Created"
         i18n:attributes="title">
+  <exit-transition transition_id="hide"/>
   <exit-transition transition_id="propose"/>
   <exit-transition transition_id="publish_and_hide"/>
   <exit-transition transition_id="publish_and_show"/>
@@ -75,6 +133,7 @@
  <state state_id="pending"
         title="Pending"
         i18n:attributes="title">
+  <exit-transition transition_id="hide"/>
   <exit-transition transition_id="publish_and_hide_from_pending"/>
   <exit-transition transition_id="publish_and_show_from_pending"/>
   <exit-transition transition_id="back_to_created"/>
@@ -131,6 +190,7 @@
  <state state_id="published_and_hidden"
         title="Published and hidden"
         i18n:attributes="title">
+  <exit-transition transition_id="hide"/>
   <exit-transition transition_id="back_to_created"/>
   <exit-transition transition_id="back_to_pending"/>
   <exit-transition transition_id="publish_and_show"/>
@@ -175,6 +235,7 @@
  <state state_id="published_and_shown"
         title="Published and shown"
         i18n:attributes="title">
+  <exit-transition transition_id="hide"/>
   <exit-transition transition_id="back_to_pending"/>
   <exit-transition transition_id="back_to_created"/>
   <exit-transition transition_id="publish_and_hide"/>
@@ -217,6 +278,18 @@
    <permission-role>Site Administrator</permission-role>
   </permission-map>
  </state>
+ <transition transition_id="hide"
+             title="Member makes content private"
+             new_state="private"
+             trigger="USER"
+             before_script=""
+             after_script=""
+             i18n:attributes="title">
+  <action url="" category="workflow" i18n:translate="">Make private</action>
+  <guard>
+    <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </transition>
  <transition transition_id="back_to_created"
              title="Back to created"
              new_state="created"

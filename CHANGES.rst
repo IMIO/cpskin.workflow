@@ -4,7 +4,8 @@ Changelog
 0.6.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add 'Private' state in cpskin_moderation_workflow : #18850
+  [laulaz]
 
 
 0.6.3 (2017-01-31)
