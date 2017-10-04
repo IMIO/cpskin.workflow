@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.4 (unreleased)
+0.6.4 (2017-10-04)
 ------------------
 
 - Add 'Private' state in cpskin_moderation_workflow : #18850
