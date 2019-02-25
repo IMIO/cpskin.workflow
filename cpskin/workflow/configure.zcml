@@ -61,6 +61,15 @@
   <!-- Upgrade steps -->
 
   <genericsetup:upgradeStep
+      title="CPSKIN Workflow: Add private view"
+      description="Upgrade step to add new private view permission"
+      handler=".upgradehandlers.add_private_view"
+      source="2"
+      destination="3"
+      profile="cpskin.workflow:default"
+      />
+
+  <genericsetup:upgradeStep
       title="CPSKIN Workflow: Add cpskin_collective_contact_workflow workflow"
       description="Upgrade step to add new CPSkin workflow assigned to collective.contact contents"
       handler=".upgradehandlers.to_one"

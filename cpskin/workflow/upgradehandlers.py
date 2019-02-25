@@ -5,6 +5,10 @@ from zope.component import queryUtility
 from zope.ramcache.interfaces.ram import IRAMCache
 
 
+def add_private_view(context):
+    context.runAllImportStepsFromProfile('profile-cpskin.workflow:default')
+
+
 def to_one(context):
     context.runImportStepFromProfile('profile-cpskin.workflow:to1', 'workflow')
     chain = ('cpskin_collective_contact_workflow',)
