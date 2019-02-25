@@ -5,18 +5,13 @@
            i18n_domain="cpskin">
 
   <!-- Dependencies -->
+
+  <include file="permissions.zcml" />
+
   <include package="cpskin.locales" />
 
   <subscriber for="Products.PlonePAS.interfaces.events.IUserInitialLoginInEvent"
               handler=".events.user_initial_logged_in" />
-
-  <subscriber for="Products.Archetypes.interfaces.IBaseContent
-                   zope.lifecycleevent.interfaces.IObjectModifiedEvent"
-              handler=".events.object_modified_at" />
-
-  <subscriber for="Products.Archetypes.interfaces.IBaseContent
-                   Products.DCWorkflow.interfaces.IAfterTransitionEvent"
-              handler=".events.state_modified_at" />
 
   <subscriber for="plone.dexterity.interfaces.IDexterityContent
                    zope.lifecycleevent.interfaces.IObjectModifiedEvent"
