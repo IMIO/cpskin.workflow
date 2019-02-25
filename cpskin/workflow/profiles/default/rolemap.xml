@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<rolemap>
+  <roles>
+    <role name="View private"/>
+  </roles>
+  <permissions>
+    <permission name="View private content"
+                acquire="False">
+        <role name="Manager"/>
+        <role name="Site Administrator"/>
+        <role name="Editor"/>
+        <role name="View private"/>
+    </permission>
+  </permissions>
+</rolemap>
