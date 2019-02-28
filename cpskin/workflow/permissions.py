@@ -3,7 +3,7 @@ from AccessControl.SecurityInfo import ModuleSecurityInfo
 from Products.CMFCore.permissions import setDefaultRoles
 
 
-security = ModuleSecurityInfo('cpskin.locales')
+security = ModuleSecurityInfo('cpskin.workflow')
 
 security.declarePublic('ViewPrivateContent')
 ViewPrivateContent = 'View private content'
