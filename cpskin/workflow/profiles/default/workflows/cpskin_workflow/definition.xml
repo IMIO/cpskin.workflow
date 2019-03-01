@@ -59,6 +59,7 @@
    <permission-role>Editor</permission-role>
    <permission-role>Reader</permission-role>
    <permission-role>Site Administrator</permission-role>
+   <permission-role>View private</permission-role>
   </permission-map>
  </state>
  <state state_id="created"

@@ -44,7 +44,7 @@ setup(name='cpskin.workflow',
           'plone.app.contenttypes'
       ],
       extras_require=dict(
-          test=['plone.app.testing'],
+          test=['plone.app.testing', 'ipdb'],
       ),
       entry_points={},
       )

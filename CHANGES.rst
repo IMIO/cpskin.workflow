@@ -4,7 +4,8 @@ Changelog
 0.6.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add View private content permission : WEBNAM-69.
+  [bsuttor]
 
 
 0.6.4 (2017-10-04)

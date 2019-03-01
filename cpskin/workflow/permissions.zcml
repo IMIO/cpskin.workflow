@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="cpskin.locales">
+
+  <permission
+    id="cpskin.ViewPrivateContent"
+    title="View private content"
+    />
+
+
+</configure>
