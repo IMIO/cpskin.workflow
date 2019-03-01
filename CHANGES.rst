@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.6.5 (unreleased)
+0.7.0 (2019-03-01)
 ------------------
 
 - Add View private content permission : WEBNAM-69.
