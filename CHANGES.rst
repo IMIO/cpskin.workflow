@@ -1,7 +1,7 @@
 Changelog
 =========
 
-0.7.1 (unreleased)
+0.7.1 (2019-03-13)
 ------------------
 
 - Update View private content permission, adding "List folder contents" and
