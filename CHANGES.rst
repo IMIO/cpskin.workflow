@@ -4,7 +4,9 @@ Changelog
 0.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Update View private content permission, adding "List folder contents" and
+  "Access contents information": WEBNAM-69.
+  [bsuttor]
 
 
 0.7.0 (2019-03-01)

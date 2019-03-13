@@ -26,6 +26,7 @@
    <permission-role>Manager</permission-role>
    <permission-role>Editor</permission-role>
    <permission-role>Reader</permission-role>
+   <permission-role>View private</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Delete objects"
@@ -39,6 +40,7 @@
    <permission-role>Manager</permission-role>
    <permission-role>Editor</permission-role>
    <permission-role>Reader</permission-role>
+   <permission-role>View private</permission-role>
    <permission-role>Site Administrator</permission-role>
   </permission-map>
   <permission-map name="Modify portal content"
