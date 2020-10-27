@@ -4,7 +4,8 @@ Changelog
 0.7.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Upload to pypi.org.
+  [bsuttor]
 
 
 0.7.1 (2019-03-13)
